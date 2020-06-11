@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端业务中常见的异步场景处理 | blog</title>
+    <meta name="generator" content="VuePress 1.5.1">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="网站描述">
+    <link rel="preload" href="/assets/css/0.styles.f1b50666.css" as="style"><link rel="preload" href="/assets/js/app.086908b6.js" as="script"><link rel="preload" href="/assets/js/2.99fa6ebc.js" as="script"><link rel="preload" href="/assets/js/7.2f39111b.js" as="script"><link rel="prefetch" href="/assets/js/3.daae1586.js"><link rel="prefetch" href="/assets/js/4.93cf5c83.js"><link rel="prefetch" href="/assets/js/5.7c779e98.js"><link rel="prefetch" href="/assets/js/6.3dde23e6.js"><link rel="prefetch" href="/assets/js/8.f6d32046.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f1b50666.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/test/test.html" class="nav-link">
+  测试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习资源" class="dropdown-title"><span class="title">学习资源</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.imooc.com/article/261756" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端学习路线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/front-end-video/" class="nav-link">
+  前端学习视频
+</a></li><li class="dropdown-item"><!----> <a href="/resource/" class="nav-link">
+  全栈
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术总结" class="dropdown-title"><span class="title">技术总结</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/technical-summary/mongo/" class="nav-link">
+  mongo
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/vue-webpack/" class="nav-link">
+  vue-webpack
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/vue-component/" class="nav-link">
+  Vue.js 组件精讲
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/ubuntu/" class="nav-link">
+  ubuntu
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/eslint/" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/nuxt/" class="nav-link">
+  nuxt
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/github/" class="nav-link">
+  github
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/es6/" class="nav-link">
+  es6
+</a></li></ul></div></div><div class="nav-item"><a href="/front-end/" class="nav-link">
+  前端
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link">
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="优秀博客" class="dropdown-title"><span class="title">优秀博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.zhangxinxu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  张鑫旭-鑫空间-鑫生活
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人主页" class="dropdown-title"><span class="title">个人主页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/qiufeihong2018" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5bf4d63cf265da61561ee241/posts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/weixin_38465623" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://segmentfault.com/u/aishangdufu" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  segmentfault
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/chou-fei-hong/activities" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  知乎
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.v2ex.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  v2ex
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/test/test.html" class="nav-link">
+  测试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="学习资源" class="dropdown-title"><span class="title">学习资源</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.imooc.com/article/261756" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端学习路线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="/front-end-video/" class="nav-link">
+  前端学习视频
+</a></li><li class="dropdown-item"><!----> <a href="/resource/" class="nav-link">
+  全栈
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术总结" class="dropdown-title"><span class="title">技术总结</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/technical-summary/mongo/" class="nav-link">
+  mongo
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/vue-webpack/" class="nav-link">
+  vue-webpack
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/vue-component/" class="nav-link">
+  Vue.js 组件精讲
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/ubuntu/" class="nav-link">
+  ubuntu
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/eslint/" class="nav-link">
+  eslint
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/nuxt/" class="nav-link">
+  nuxt
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/node/" class="nav-link">
+  node
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/css/" class="nav-link">
+  css
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/github/" class="nav-link">
+  github
+</a></li><li class="dropdown-item"><!----> <a href="/technical-summary/es6/" class="nav-link">
+  es6
+</a></li></ul></div></div><div class="nav-item"><a href="/front-end/" class="nav-link">
+  前端
+</a></div><div class="nav-item"><a href="/interview/" class="nav-link">
+  面试
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="优秀博客" class="dropdown-title"><span class="title">优秀博客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.zhangxinxu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  张鑫旭-鑫空间-鑫生活
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="个人主页" class="dropdown-title"><span class="title">个人主页</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/qiufeihong2018" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5bf4d63cf265da61561ee241/posts" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/weixin_38465623" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://segmentfault.com/u/aishangdufu" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  segmentfault
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.zhihu.com/people/chou-fei-hong/activities" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  知乎
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.jianshu.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  简书
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://www.v2ex.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  v2ex
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/test/one.html" aria-current="page" class="active sidebar-link">前端业务中常见的异步场景处理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/test/one.html#背景" class="sidebar-link">背景</a></li><li class="sidebar-sub-header"><a href="/test/one.html#异步循环" class="sidebar-link">异步循环</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="前端业务中常见的异步场景处理"><a href="#前端业务中常见的异步场景处理" class="header-anchor">#</a> 前端业务中常见的异步场景处理</h1> <h2 id="背景"><a href="#背景" class="header-anchor">#</a> 背景</h2> <p>随着前端应用的复杂度提升，应用中的异步场景也越来越多。虽然 ES6 中 Promise、generator、async/await 语法能简化异步代码的编写，但是一些业务场景下还是需要花点心思去处理。</p> <p>比如：</p> <ul><li>异步循环：需要循环拉取分页数据，直至数据为空。</li> <li>异步取消：组件销毁后，异步才完成，需要避免更新组件的操作。</li> <li>后续异步发生，忽略前面未完成异步：同一接口携带不同参数多次请求的竞态问题，先发后至，后发先至。</li> <li>异步未完成时，后续相同异步等待并一起完成：同一幂等接口多次请求。</li> <li>异步未完成时，后续异步等待：异步队列。</li></ul> <h2 id="异步循环"><a href="#异步循环" class="header-anchor">#</a> 异步循环</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>async function requestAll() {
+    let hasNext = true;
+
+    while (hasNext) {
+        const res = await axios(...);
+        
+        hasNext = res.hasNext;
+    }
+}
+
+requestAll();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.086908b6.js" defer></script><script src="/assets/js/2.99fa6ebc.js" defer></script><script src="/assets/js/7.2f39111b.js" defer></script>
+  </body>
+</html>
